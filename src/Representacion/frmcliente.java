@@ -326,7 +326,7 @@ public class frmcliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnnuevo)
                     .addComponent(btnguardar)
-                    .addComponent(btncancelar))
+                    .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -584,6 +584,9 @@ public class frmcliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.getDesktopPane().getDesktopManager().closeFrame(this);
         inhabilitar();
+        if(new frmvistacliente().isShowing() || new frmvistacliente().isIcon()){
+            frmvistacliente.btnagregar.setEnabled(false);            
+        }
     }//GEN-LAST:event_btncancelarActionPerformed
 
 
