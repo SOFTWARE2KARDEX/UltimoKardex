@@ -24,10 +24,6 @@ public class vopentrada extends voperacion {
         this.Documento = Documento;
     }
 
-    
-    
-    
-    
     public int getIdProveedor() {
         return idProveedor;
     }
@@ -43,6 +39,7 @@ public class vopentrada extends voperacion {
     public void setDocumento(String Documento) {
         this.Documento = Documento;
     }
+
     
     
     

@@ -17,19 +17,17 @@ public class voperacion {
     private int idPlancha;
     private int idUsuario;
     private int Cantidad;
-    private int Existencia;
     private Date Fecha;
 
     public voperacion() {
     }
 
-    public voperacion(int idOperacion, int idTipooperacion, int idPlancha, int idUsuario, int Cantidad, int Existencia, Date Fecha) {
+    public voperacion(int idOperacion, int idTipooperacion, int idPlancha, int idUsuario, int Cantidad, Date Fecha) {
         this.idOperacion = idOperacion;
         this.idTipooperacion = idTipooperacion;
         this.idPlancha = idPlancha;
         this.idUsuario = idUsuario;
         this.Cantidad = Cantidad;
-        this.Existencia = Existencia;
         this.Fecha = Fecha;
     }
 
@@ -71,14 +69,6 @@ public class voperacion {
 
     public void setCantidad(int Cantidad) {
         this.Cantidad = Cantidad;
-    }
-
-    public int getExistencia() {
-        return Existencia;
-    }
-
-    public void setExistencia(int Existencia) {
-        this.Existencia = Existencia;
     }
 
     public Date getFecha() {

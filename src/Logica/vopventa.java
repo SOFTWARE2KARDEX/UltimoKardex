@@ -24,10 +24,6 @@ public class vopventa extends voperacion  {
         this.Documento = Documento;
     }
 
-    
-    
-    
-    
     public int getIdCliente() {
         return idCliente;
     }
@@ -43,6 +39,7 @@ public class vopventa extends voperacion  {
     public void setDocumento(String Documento) {
         this.Documento = Documento;
     }
+
     
     
     

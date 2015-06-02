@@ -26,7 +26,6 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         inhabilitar();
         
         LetrasODigitos.soloDigitos(txtcantidad);
-        LetrasODigitos.soloDigitos(txtexistencia);
         
     }
     
@@ -66,7 +65,6 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         //Bloque las cajas de texto
         txtoperacion.setEnabled(false);
         txtplancha.setEnabled(false);
-        txtexistencia.setEnabled(false);
         txtcantidad.setEnabled(false);
         txtusuario.setEnabled(false);
         dcfecha.setEnabled(false);
@@ -87,7 +85,7 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         txtcantidad.setText("");
         txtidusuario.setText("");
         txtusuario.setText("");
-        txtexistencia.setText("");
+
         
        
     }
@@ -107,7 +105,6 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         //Bloque las cajas de texto
         txtoperacion.setEnabled(false);
         txtplancha.setEnabled(false);
-        txtexistencia.setEnabled(false);
         txtcantidad.setEnabled(true);
         txtusuario.setEnabled(false);
         dcfecha.setEnabled(true);
@@ -128,7 +125,6 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         txtcantidad.setText("");
         //txtidusuario.setText("");
         //txtusuario.setText("");
-        txtexistencia.setText("");
 
     }
 
@@ -136,7 +132,7 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         try {
             DefaultTableModel modelo;
             foperacion func = new foperacion();
-            modelo = func.mostrar(buscar);
+            modelo = func.mostrarOperacion(buscar);
 
             tablalistado.setModel(modelo);
             ocultar_columnas();
@@ -173,8 +169,6 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         txtidplancha = new javax.swing.JTextField();
         txtplancha = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtexistencia = new javax.swing.JTextField();
         btnbuscarplancha = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         dcfecha = new com.toedter.calendar.JDateChooser();
@@ -272,14 +266,6 @@ public class frmoperacion extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel11.setText("Existencia");
-
-        txtexistencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtexistenciaActionPerformed(evt);
-            }
-        });
-
         btnbuscarplancha.setText("...");
         btnbuscarplancha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,17 +287,13 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(38, 38, 38)
                         .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtexistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(200, 200, 200)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,7 +318,7 @@ public class frmoperacion extends javax.swing.JInternalFrame {
                                 .addComponent(txtoperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnbuscaroperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(txtidplancha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -350,7 +332,7 @@ public class frmoperacion extends javax.swing.JInternalFrame {
                                 .addComponent(btnnuevo)
                                 .addGap(35, 35, 35)
                                 .addComponent(btnguardar)))
-                        .addContainerGap(32, Short.MAX_VALUE))))
+                        .addContainerGap(36, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,9 +354,7 @@ public class frmoperacion extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11)
-                        .addComponent(txtexistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(dcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addGap(18, 18, Short.MAX_VALUE)
@@ -562,11 +542,9 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         //Instanciando a las funciones insertar, editar y eliminar
         foperacion func = new foperacion();
         
-        dts.setIdOperacion(Integer.parseInt(txtidoperacion.getText()));
         dts.setIdTipooperacion(Integer.parseInt(txtidtipooperacion.getText()));
         dts.setIdPlancha(Integer.parseInt(txtidplancha.getText()));
         
-        dts.setExistencia(Integer.parseInt(txtexistencia.getText()));
         dts.setCantidad(Integer.parseInt(txtcantidad.getText()));
         //Fecha
         Calendar cal;
@@ -619,9 +597,8 @@ public class frmoperacion extends javax.swing.JInternalFrame {
         txtidusuario.setText(tablalistado.getValueAt(fila, 5).toString());
         txtusuario.setText(tablalistado.getValueAt(fila, 6).toString());
         txtcantidad.setText(tablalistado.getValueAt(fila, 7).toString());
-        txtexistencia.setText(tablalistado.getValueAt(fila, 8).toString());
         //Fecha
-        dcfecha.setDate(Date.valueOf(tablalistado.getValueAt(fila, 9).toString()));
+        dcfecha.setDate(Date.valueOf(tablalistado.getValueAt(fila, 8).toString()));
         
         
         
@@ -669,10 +646,6 @@ public class frmoperacion extends javax.swing.JInternalFrame {
     private void txtplanchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtplanchaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtplanchaActionPerformed
-
-    private void txtexistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtexistenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtexistenciaActionPerformed
 
     private void btnbuscarplanchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarplanchaActionPerformed
         // TODO add your handling code here:
@@ -743,7 +716,6 @@ public class frmoperacion extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser dcfecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -757,7 +729,6 @@ public class frmoperacion extends javax.swing.JInternalFrame {
     private javax.swing.JTable tablalistado;
     private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextField txtcantidad;
-    private javax.swing.JTextField txtexistencia;
     private javax.swing.JTextField txtidoperacion;
     public static javax.swing.JTextField txtidplancha;
     public static javax.swing.JTextField txtidtipooperacion;

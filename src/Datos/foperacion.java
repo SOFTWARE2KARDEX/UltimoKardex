@@ -18,27 +18,32 @@ import javax.swing.table.DefaultTableModel;
  * @author HENRY
  */
 public class foperacion {
-    private conexion mysql= new conexion();
+   private conexion mysql= new conexion();
     private Connection cn=mysql.conectar();
     private String sSQL="";
     public Integer totalregistros;
     
     //Mostrar Consulta
-    public DefaultTableModel mostrar(String buscar){
+    public DefaultTableModel mostrarOperacion(String buscar){
        DefaultTableModel modelo;
        
-       String [] titulos = {"ID","IdTipo","Operación","IdPlancha","Plancha","IdUsuario","Usuario","Cantidad","Existencia","Fecha"};
+       String [] titulos = {"ID","IdTipo","Operación","IdPlancha","Plancha","IdUsuario","Usuario","Cantidad","Fecha"};
        
-       String [] registro =new String [10];
+       String [] registro =new String [9];
        
        totalregistros=0;
        modelo = new DefaultTableModel(null,titulos);
        
-       sSQL="select o.idOperacion,o.idTipooperacion,(select Operacion from Tipooperacion where idTipooperacion=o.idTipooperacion)as Operacion,"+
-            "o.idPlancha,p.Tamaño,p.Medida,o.idUsuario,(select nombre from Usuario where idUsuario=o.idUsuario)as nomb,"+
-            "(select apellido from Usuario where idUsuario=o.idUsuario)as apel,o.Cantidad,o.Existencia,"+
-            "o.Fecha from Operacion o inner join Plancha p on o.idPlancha=p.idPlancha where o.Fecha ='"+ buscar + "' order by idOperacion";
-       
+//       sSQL="select o.idOperacion,o.idTipooperacion,(select Operacion from Tipooperacion where idTipooperacion=o.idTipooperacion)as Operacion,"+
+//            "o.idPlancha,p.Tamaño,p.Medida,o.idUsuario,(select nombre from Usuario where idUsuario=o.idUsuario)as nomb,"+
+//            "(select apellido from Usuario where idUsuario=o.idUsuario)as apel,o.Cantidad,"+
+//            "o.Fecha from Operacion o inner join Plancha p on o.idPlancha=p.idPlancha where o.Fecha like '"+ buscar + "' order by idOperacion desc";
+        sSQL="select o.idOperacion, o.idTipooperacion,t.Operacion,o.idPlancha,p.Tamaño,p.Medida,o.idUsuario, u.nombre,"+
+                "u.apellido,o.Cantidad,o.Fecha "+
+                " from Operacion o inner join Tipooperacion t "+
+                " on o.idTipooperacion=t.idTipooperacion inner join Plancha p "+
+                " on o.idPlancha=p.idPlancha inner join Usuario u "+
+                " on o.idUsuario=u.idUsuario where o.Fecha like '%"+ buscar + "%' and (t.idTipooperacion=3 or t.idTipooperacion=4) order by o.idOperacion desc";
        try {
            Statement st= cn.createStatement();
            ResultSet rs=st.executeQuery(sSQL);
@@ -50,10 +55,10 @@ public class foperacion {
                registro [3]=rs.getString("idPlancha");
                registro [4]=rs.getString("Tamaño") + " " + rs.getString("Medida");
                registro [5]=rs.getString("idUsuario");
-               registro [6]=rs.getString("nomb") + " " + rs.getString("apel");
+               registro [6]=rs.getString("nombre") + " " + rs.getString("apellido");
                registro [7]=rs.getString("Cantidad");
-               registro [8]=rs.getString("Existencia");
-               registro [9]=rs.getString("Fecha");
+             //  registro [8]=rs.getString("Existencia");
+               registro [8]=rs.getString("Fecha");
                
                                              
                totalregistros=totalregistros+1;
@@ -73,8 +78,8 @@ public class foperacion {
    
    //Funcion Insertar
    public boolean insertar (voperacion dts){
-       sSQL="insert into Operacion (idTipooperacion,idPlancha,idUsuario,Cantidad,Existencia,Fecha)" +
-               "values (?,?,?,?,?,?)";
+       sSQL="insert into Operacion (idTipooperacion,idPlancha,idUsuario,Cantidad,Fecha)" +
+               "values (?,?,?,?,?)";
        try {
            
            PreparedStatement pst=cn.prepareStatement(sSQL);
@@ -82,8 +87,8 @@ public class foperacion {
            pst.setInt(2, dts.getIdPlancha());
            pst.setInt(3, dts.getIdUsuario());
            pst.setInt(4, dts.getCantidad());
-           pst.setInt(5, dts.getExistencia());
-           pst.setDate(6, dts.getFecha());
+          // pst.setInt(5, dts.getExistencia());
+           pst.setDate(5, dts.getFecha());
                                  
            int n=pst.executeUpdate();
            
@@ -105,7 +110,7 @@ public class foperacion {
    
    //Funcion Editar
    public boolean editar (voperacion dts){
-       sSQL="update Operacion set idTipooperacion=?,idPlancha=?,idUsuario=?,Cantidad=?,Existencia=?,Fecha=?"+
+       sSQL="update Operacion set idTipooperacion=?,idPlancha=?,idUsuario=?,Cantidad=?,Fecha=?"+
                " where idOperacion=?";
                   
        try {
@@ -115,9 +120,9 @@ public class foperacion {
            pst.setInt(2, dts.getIdPlancha());
            pst.setInt(3, dts.getIdUsuario());
            pst.setInt(4, dts.getCantidad());
-           pst.setInt(5, dts.getExistencia());
-           pst.setDate(6, dts.getFecha());
-           pst.setInt(7, dts.getIdOperacion());
+          // pst.setInt(5, dts.getExistencia());
+           pst.setDate(5, dts.getFecha());
+           pst.setInt(6, dts.getIdOperacion());
                                  
            int n=pst.executeUpdate();
            

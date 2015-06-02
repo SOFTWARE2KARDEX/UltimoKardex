@@ -25,6 +25,8 @@ public class frmopventa extends javax.swing.JInternalFrame {
         
     }
     
+    
+    
      private String accion = "guardar";
      
      
@@ -57,7 +59,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
         //Invisible
         jLabel2.setVisible(false);
         txtidoperacion.setVisible(false);
-        txtidtipooperacion.setVisible(false);
         txtidcliente.setVisible(false);
         txtidplancha.setVisible(false);
         txtidusuario.setVisible(false);
@@ -66,11 +67,11 @@ public class frmopventa extends javax.swing.JInternalFrame {
         //Bloque las cajas de texto
         txtcliente.setEnabled(false);
         txtplancha.setEnabled(false);
-        txtexistencia.setEnabled(false);
         txtcantidad.setEnabled(false);
         txtusuario.setEnabled(false);
         dcfecha.setEnabled(false);
         txtdocumento.setEnabled(false);
+        
         
        
         //Bloque los botones
@@ -88,7 +89,7 @@ public class frmopventa extends javax.swing.JInternalFrame {
         txtcantidad.setText("");
         txtidusuario.setText("");
         txtusuario.setText("");
-        txtexistencia.setText("");
+        txtdocumento.setText("");
         
        
     }
@@ -108,7 +109,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
         //Bloque las cajas de texto
         txtcliente.setEnabled(false);
         txtplancha.setEnabled(false);
-        txtexistencia.setEnabled(false);
         txtcantidad.setEnabled(true);
         txtusuario.setEnabled(false);
         dcfecha.setEnabled(true);
@@ -130,7 +130,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
         txtcantidad.setText("");
         //txtidusuario.setText("");
         //txtusuario.setText("");
-        txtexistencia.setText("");
         txtdocumento.setText("");
 
     }
@@ -149,7 +148,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
             JOptionPane.showConfirmDialog(rootPane, e);
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -185,7 +183,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
@@ -196,7 +193,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
         btnbuscarplancha = new javax.swing.JButton();
         txtidplancha = new javax.swing.JTextField();
         txtplancha = new javax.swing.JTextField();
-        txtexistencia = new javax.swing.JTextField();
         dcfecha = new com.toedter.calendar.JDateChooser();
         txtcantidad = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -434,9 +430,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Plancha");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel14.setText("Existencia");
-
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel15.setText("Fecha");
 
@@ -486,12 +479,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
             }
         });
 
-        txtexistencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtexistenciaActionPerformed(evt);
-            }
-        });
-
         txtcantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcantidadActionPerformed(evt);
@@ -529,21 +516,20 @@ public class frmopventa extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                                         .addComponent(btnbuscarplancha, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(4, 4, 4)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtdocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtexistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(txtdocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel8))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(dcfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68)))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -573,22 +559,16 @@ public class frmopventa extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtdocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtexistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(dcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtdocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel16))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dcfecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -688,12 +668,10 @@ public class frmopventa extends javax.swing.JInternalFrame {
         //Instanciando a las funciones insertar, editar y eliminar
         fopventa func = new fopventa();
         
-        dts.setIdOperacion(Integer.parseInt(txtidoperacion.getText()));
-        dts.setIdTipooperacion(Integer.parseInt(txtidtipooperacion.getText()));
+      //  dts.setIdTipooperacion(Integer.parseInt(txtidtipooperacion.getText()));
         dts.setIdCliente(Integer.parseInt(txtidcliente.getText()));
         dts.setIdPlancha(Integer.parseInt(txtidplancha.getText()));
         
-        dts.setExistencia(Integer.parseInt(txtexistencia.getText()));
         dts.setCantidad(Integer.parseInt(txtcantidad.getText()));
         //Fecha
         Calendar cal;
@@ -704,6 +682,7 @@ public class frmopventa extends javax.swing.JInternalFrame {
         a=cal.get(Calendar.YEAR)-1900;             
         dts.setFecha(new Date(a,m,d));
         
+        dts.setDocumento(txtdocumento.getText());
         dts.setIdUsuario(idusuario);
         
 
@@ -738,7 +717,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
         int fila = tablalistado.rowAtPoint(evt.getPoint());
 
         txtidoperacion.setText(tablalistado.getValueAt(fila, 0).toString());
-        txtidtipooperacion.setText(tablalistado.getValueAt(fila, 1).toString());
         txtidcliente.setText(tablalistado.getValueAt(fila, 2).toString());
         txtcliente.setText(tablalistado.getValueAt(fila, 3).toString());
         txtidplancha.setText(tablalistado.getValueAt(fila, 4).toString());
@@ -747,9 +725,9 @@ public class frmopventa extends javax.swing.JInternalFrame {
         txtidusuario.setText(tablalistado.getValueAt(fila, 6).toString());
         txtusuario.setText(tablalistado.getValueAt(fila, 7).toString());
         txtcantidad.setText(tablalistado.getValueAt(fila, 8).toString());
-        txtexistencia.setText(tablalistado.getValueAt(fila, 9).toString());
         //Fecha
-        dcfecha.setDate(Date.valueOf(tablalistado.getValueAt(fila, 10).toString()));
+        dcfecha.setDate(Date.valueOf(tablalistado.getValueAt(fila, 9).toString()));
+        txtdocumento.setText(tablalistado.getValueAt(fila, 10).toString());
         
         
         
@@ -797,10 +775,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
     private void txtplanchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtplanchaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtplanchaActionPerformed
-
-    private void txtexistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtexistenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtexistenciaActionPerformed
 
     private void btnbuscarplanchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarplanchaActionPerformed
         // TODO add your handling code here:
@@ -900,7 +874,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnsalir;
     private com.toedter.calendar.JDateChooser dcfecha;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -922,7 +895,6 @@ public class frmopventa extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtcantidad;
     public static javax.swing.JTextField txtcliente;
     private javax.swing.JTextField txtdocumento;
-    private javax.swing.JTextField txtexistencia;
     public static javax.swing.JTextField txtidcliente;
     private javax.swing.JTextField txtidoperacion;
     public static javax.swing.JTextField txtidplancha;
